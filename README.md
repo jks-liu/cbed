@@ -45,13 +45,13 @@ uint8_t add_to_buffer(uint8_t new_value)
 # Moving average
 
 - Header: [jks-moving-average.h](src/jks-moving-average.h)
-- Src: [jks-moving-average.h](src/jks-moving-average.h)
+- Src: [jks-moving-average.c](src/jks-moving-average.c)
 - Dependency: Ring buffer
 
 
 # Moving standard deviation
 
 - Header: [jks-moving-standard-deviation.h](src/jks-moving-standard-deviation.h)
-- Src: [jks-moving-standard-deviation.h](src/jks-moving-standard-deviation.h)
+- Src: [jks-moving-standard-deviation.c](src/jks-moving-standard-deviation.c)
 - Dependency: Ring buffer, Moving average
 
