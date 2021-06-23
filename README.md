@@ -28,14 +28,16 @@ Example:
 
 ```c
 #define N_BUFFER 55
-uint8_t g_buffer[N_BUFFER];
-uint8_t g_buffer_index = 0;
+uint8_t g_buffer[N_BUFFER] = {0};
+struct jks_ring_buffer g_ring = {0};
+void jks_ring_buffer_init(&g_ring, N_BUFFER);
+
 
 uint8_t add_to_buffer(uint8_t new_value)
 {
-    uint8_t eldest_value = g_buffer[g_buffer_index];
-    g_buffer[g_buffer_index] = new_value;
-    jks_ring_buffer_update_index(&g_buffer_index, N_BUFFER);
+    uint8_t eldest_value = g_buffer[g_ring.index];
+    g_buffer[g_ring.index] = new_value;
+    jks_ring_buffer_update_index(&g_ring);
     return eldest_value;
 }
 ```
@@ -43,3 +45,13 @@ uint8_t add_to_buffer(uint8_t new_value)
 # Moving average
 
 - Header: [jks-moving-average.h](src/jks-moving-average.h)
+- Src: [jks-moving-average.h](src/jks-moving-average.h)
+- Dependency: Ring buffer
+
+
+# Moving standard deviation
+
+- Header: [jks-moving-standard-deviation.h](src/jks-moving-standard-deviation.h)
+- Src: [jks-moving-standard-deviation.h](src/jks-moving-standard-deviation.h)
+- Dependency: Ring buffer, Moving average
+
