@@ -15,6 +15,17 @@ Code convertions
 - Use `jks_`, `Jks` ... as the name space
 - Use `uint8_t` if possible
 
+## Config
+Remane `default-jks-cbed-config.h` as `jks-cbed-config.h` and then dis/enable configs you (not) wanted.
+
+# Counter
+## Cycle counter
+- Increase: 0, 1, 2, ..., n-1, n, 0, 1, ...
+- Decrease: n, n-1, ..., 3, 2, 1, 0, n, n-1, ...
+## Saturate counter
+- Increase: 0, 1, 2, ..., n-1, n, n, n, ...
+- Decrease: n, n-1, ..., 3, 2, 1, 0, 0, 0, ...
+
 
 # Ring buffer
 

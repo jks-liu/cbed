@@ -9,6 +9,8 @@ void jks_moving_std_update(struct jks_moving_std *self, struct jks_ring_buffer r
     self->variance += diff - buffer[ring.index];
     // In case of float point error
     self->variance = self->variance >= 0 ? self->variance : 0;
+#ifdef JKS_STD_CONFIG_STD
     self->standard_deviation = sqrtf(self->variance);
+#endif
     buffer[ring.index] = diff;
 }
