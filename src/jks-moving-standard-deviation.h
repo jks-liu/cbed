@@ -10,6 +10,7 @@
  * 
  */
 
+#include "jks-cbed-config.h"
 #include "jks-ring-buffer.h"
 #include "jks-moving-average.h"
 
@@ -24,7 +25,9 @@ extern "C" {
 struct jks_moving_std {
     struct jks_moving_average average;
     float variance;
+#ifdef JKS_STD_CONFIG_STD
     float standard_deviation;
+#endif
 };
 
 /**
