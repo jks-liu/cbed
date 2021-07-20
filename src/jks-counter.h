@@ -14,51 +14,23 @@ extern "C" {
  */
 struct jks_counter {
     bool is_saturate;
-    uint8_t counter;
-    uint8_t counter_max;
+    JKS_COUNTER_T counter;
+    JKS_COUNTER_T counter_max;
 };
 
-inline
 #ifdef JKS_COUNTER_CONFIG_RETURN_COUNTER
-uint8_t
+JKS_COUNTER_T
 #else
 void
 #endif 
-jks_counter_increase(struct jks_counter *counter)
-{
-    if (counter->counter == counter->counter_max) {
-        if (!counter->is_saturate) {
-            counter->counter = 0;
-        }
-    } else {
-        ++counter->counter;
-    }
+jks_counter_increase(struct jks_counter *counter);
 
 #ifdef JKS_COUNTER_CONFIG_RETURN_COUNTER
-    return counter->counter;
-#endif
-}
-
-inline
-#ifdef JKS_COUNTER_CONFIG_RETURN_COUNTER
-uint8_t
+JKS_COUNTER_T
 #else
 void
 #endif 
-jks_counter_decrease(struct jks_counter *counter)
-{
-    if (counter->counter == 0) {
-        if (!counter->is_saturate) {
-            counter->counter = counter->counter_max;
-        }
-    } else {
-        --counter->counter;
-    }
-
-#ifdef JKS_COUNTER_CONFIG_RETURN_COUNTER
-    return counter->counter;
-#endif
-}
+jks_counter_decrease(struct jks_counter *counter);
 
 
 #ifdef __cplusplus
